@@ -1,3 +1,9 @@
+# v1.0.8
+## 12/29/2016
+
+1. [](#bugfix)
+    * Fixed asset JS injection
+
 # v1.0.6
 ## 09/16/2016
 

@@ -14,8 +14,9 @@ class MapShortcode extends Shortcode
         $this->shortcode->getHandlers()->add('google-maps', function(ShortcodeInterface $sc) use ($apikeystring) {
 
             //add assets
-            $this->grav['assets']->addJs('//maps.googleapis.com/maps/api/js'.$apikeystring);
-            $this->grav['assets']->addJs('plugin://google-maps/js/google-maps.js');
+            $this->shortcode->addAssets('js', '//maps.googleapis.com/maps/api/js'.$apikeystring);
+            $this->shortcode->addAssets('js', 'plugin://google-maps/js/google-maps.js');
+
             $hash = $this->shortcode->getId($sc);
             $infowindow = $sc->getContent();
 
