@@ -3,7 +3,7 @@
 
 ## About
 
-The **Google Maps** plugin provides the Google Maps Javascript API as shortcode.
+The **Google Maps** plugin provides the Google Maps Javascript API as shortcode, and also provides a **Google Places** Place marker map as shortcode.
 
 ## Installation
 
@@ -24,7 +24,7 @@ enabled: true
 google_api_key:
 ```
 
-## Quick Example
+## Quick Examples
 
 ```
 [google-maps width='100%' lat=44.540 lng=-78.546 zoom=13 scrollwheel=true panControl=true iconurl='/absolute/path/to/marker/icon.png']
@@ -33,8 +33,13 @@ This is my place
 [/google-maps]
 ```
 
+```
+[google-place id=ChIJB3yzF8eIMW0RiCAeLVd5EAc width=40% height=300px zoom=17][/google-place]
+```
+
 ## Available Parameters
 
+### Maps
 * `width` - map width in px or % | default 600px
 * `height` - map height in px or % | default 400px
 * `lat` - center of map and marker latitude | default 44.540
@@ -46,3 +51,11 @@ This is my place
 * `iconurl` - absolute path to a custom marker icon
 
 the optional wrapped content is the **infowindow** content
+
+### Places
+
+* `id` - Google Places placeId (required - [look it up](https://developers.google.com/places/place-id))
+* `zoom` - map zoom | default 16
+* `iconurl` - absolute path to a custom marker icon (optional)
+
+`width`, `height`, `scrollwheel`, `draggable`, `pancontrol`, `panControl` _as for Maps above_

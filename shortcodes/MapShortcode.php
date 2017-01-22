@@ -35,5 +35,30 @@ class MapShortcode extends Shortcode
 
             return $output;
         });
+
+		$apikeystring = ( ($apikeystring) ? "{$apikeystring}&" : '?' ) . 'libraries=places';
+        $this->shortcode->getHandlers()->add('google-place', function(ShortcodeInterface $sc) use ($apikeystring) {
+
+            //add assets
+            $this->grav['assets']->addJs('//maps.googleapis.com/maps/api/js'.$apikeystring);
+            $this->grav['assets']->addJs('plugin://google-maps/js/google-places.js');
+            $hash = $this->shortcode->getId($sc);
+            // $infowindow = $sc->getContent();
+
+            $output = $this->twig->processTemplate('partials/google-places.html.twig', [
+                'hash' => $hash,
+                'width' => $sc->getParameter('width', '600px'),
+                'height' => $sc->getParameter('height', '400px'),
+                'zoom' => $sc->getParameter('zoom', 16),
+                'scrollwheel' => $sc->getParameter('scrollwheel', true),
+                'draggable' => $sc->getParameter('draggable', true),
+                'pancontrol' => $sc->getParameter('pancontrol', true),
+                'iconurl' => $sc->getParameter('iconurl', ''),
+                // 'infowindow' => $infowindow,
+                'placeid' => $sc->getParameter('id'),
+            ]);
+
+            return $output;
+        });
     }
 }
