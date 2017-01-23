@@ -16,21 +16,17 @@ jQuery(document).ready(function () {
 		mapOptions[property] = property;
 	});
 
-
 	var map = new google.maps.Map(this, mapOptions);
-
 	var placesService = new google.maps.places.PlacesService(map);
-
 
 	placesService.getDetails({
 		'placeId': $(this).data('placeid'),
 		}, function(place, status) {
 			if (status === google.maps.places.PlacesServiceStatus.OK) {
 				map.setCenter(place.geometry.location);
-
 				jQuery.extend(markerOptions, {
 					'map': map,
-					'position': place.geometry.location, // place.geometry.location,
+					'position': place.geometry.location,
 					});
 
 				var marker = new google.maps.Marker(markerOptions);
