@@ -27,8 +27,14 @@ jQuery(document).ready(function () {
 				jQuery.extend(markerOptions, {
 					'map': map,
 					'position': place.geometry.location,
+					'icon': { url: 'https://maps.gstatic.com/mapfiles/place_api/icons/dentist-71.png', scaledSize: new google.maps.Size(20,20), anchor: new google.maps.Point(10,10), labelOrigin: new google.maps.Point(52,15), },
+					'label': { color: '#44f', text: 'QE2 Dental', 'font-weight': 'bold', },
+					// 'place': {location: place.geometry.location, placeId: place.place_id,},
 					});
-
+				if(!markerOptions.hasOwnProperty('icon')) {
+					markerOptions.icon = place.icon;
+				}
+				console.log(place);
 				var marker = new google.maps.Marker(markerOptions);
 			}
 			}
