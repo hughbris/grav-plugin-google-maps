@@ -4,6 +4,6 @@
      data-scrollwheel="{{ scrollwheel }}"
      data-draggable="{{ draggable }}"
      data-pancontrol="{{ pancontrol }}"
-     data-iconurl="{{ iconurl }}"
+     {{ iconurl is empty ?: ' data-iconurl="' ~ iconurl ~ '"' }}
      >
 </div>
